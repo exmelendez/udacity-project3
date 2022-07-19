@@ -15,21 +15,21 @@
   
   <main class="main holder">
     <div class="temp-cont">
-      <span class="temp-cont__num">89</span>
-      <span class="temp-cont__metric">&#176;F</span>
+      <span id="tempDisplay" class="temp-cont__num">89</span>
+      <span id="tempMetricDisplay" class="temp-cont__metric">&#176;F</span>
     </div>
     
     <div class="info-cont">
-      <input id="zip" class="info-cont__zipInp" type="text" value="10463" placeholder="Enter Zip" />
+      <input id="zip" class="info-cont__zipInp" type="text" placeholder="Type here" />
       <span class="info-cont__divid">/</span>
-      <span>Cloudy</span>
+      <span id="weatherDesc"><--- Enter zipcode</span>
       <span id="weatherImg" class="info-cont__icon"></span>
     </div>
     
     <div class="feel">
       <div class="feel-inpCont">
         <label for="feelings" class="feelLabel">How are you feeling today?</label>
-        <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="40"></textarea>
+        <textarea id="feelings" class= "myInput" placeholder="Enter your feelings here" rows="9" cols="40"></textarea>
       </div>
 
       <button id="generate" class="submitBtn" type="submit">Generate</button>

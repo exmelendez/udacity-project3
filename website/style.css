@@ -74,12 +74,14 @@ body {
   margin: 0 0;
   padding: 0 0;
   display: inline;
+  visibility: hidden;
 }
 
 .temp-cont__metric {
   margin: 0 0;
   padding: 0 0;
   display: inline;
+  visibility: hidden;
 }
 
 .info-cont {
@@ -88,7 +90,7 @@ body {
   
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   
   font-size: 2em;
 }
@@ -105,6 +107,29 @@ body {
   font-size: 0.7em;
 }
 
+/* WebKit, Edge */
+.info-cont__zipInp::-webkit-input-placeholder {
+  font-size: 0.7em;
+}
+/* Firefox 4-18 */
+.info-cont__zipInp:-moz-placeholder {
+  font-size: 0.7em;
+  opacity: 1;
+}
+/* Firefox 19+ */
+.info-cont__zipInp::-moz-placeholder {
+  font-size: 0.7em;
+  opacity: 1;
+}
+/* IE 10-11 */
+.info-cont__zipInp:-ms-input-placeholder {
+  font-size: 0.7em;
+}
+/* Edge */
+.info-cont__zipInp::-ms-input-placeholder {
+  font-size: 0.7em;
+}
+
 .info-cont__divid {
   margin: 0;
   text-align: center;
@@ -114,14 +139,13 @@ body {
 }
 
 .info-cont__icon {
-  background-image: url('https://openweathermap.org/img/wn/02d@2x.png');
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0;
   padding: 0;
   width: 50px;
   height: 50px;
-  display: inline-block;
+  display: none;
 }
 
 .feel {
@@ -203,7 +227,6 @@ body {
   width: 12%;
   font-size: 1.2em;
   cursor: pointer;
-  /* background-color: red; */
 }
 
 .dataBx__arrow {

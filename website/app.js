@@ -1,6 +1,5 @@
 /* Global Variables */
 const generateBtn = document.getElementById('generate');
-const zipcodeInput = document.getElementById('zip');
 const modalBtn = document.getElementById('modalBtn');
 const modal = document.getElementById('modal');
 const modalBtnArrow = document.getElementById('modalBtnArrow');
@@ -18,8 +17,7 @@ modalBtn.addEventListener('click', () => {
 });
 
 // Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+
 
 /*
 fetch('/')
@@ -50,14 +48,36 @@ const getWeather = async (baseUrl, lat, lon, apiKey) => {
   }
 };
 
-const submitEntry = async zip => {
+const postData = (date, userEntry, weatherData) => {
+  const tempDisplay = document.getElementById('tempDisplay');
+  const tempMetricDisplay = document.getElementById('tempMetricDisplay');
+  const weatherDesc = document.getElementById('weatherDesc');
+  const weatherImg = document.getElementById('weatherImg');
+  const wthrImgBaseUrl = 'https://openweathermap.org/img/wn/';
+  const wthrImgExtUrl = '@2x.png';
+  const wthrImgFormUrl = `${wthrImgBaseUrl}${weatherData.weather[0].icon}${wthrImgExtUrl}`;
+
+  tempDisplay.textContent = weatherData.main.temp.toFixed();
+  weatherDesc.textContent = weatherData.weather[0].main;
+
+  tempDisplay.style.visibility = 'visible';
+  tempMetricDisplay.style.visibility = 'visible';
+
+  weatherImg.style.backgroundImage = `url(${wthrImgFormUrl})`;
+  weatherImg.style.display = 'inline-block';
+};
+
+const submitEntry = async (zip, textEntry) => {
   const baseUrl = 'https://api.openweathermap.org/';
   const apiKey = '&appid=d5b6158d16fade3dcd73273e5729301b';
 
   const geoData = await getLatLon(baseUrl, zip, apiKey);
   const weatherData = await getWeather(baseUrl, geoData.lat, geoData.lon, apiKey);
-  console.log('geoData:', geoData);
-  console.log('weatherData:', weatherData);
+
+  const d = await new Date();
+  const newDate = await d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+
+  postData(newDate, textEntry, weatherData);
 
   /*
   const res = await fetch(`${baseUrl}${geoUrl}${apiKey}`)
@@ -77,8 +97,11 @@ const submitEntry = async zip => {
 
 generateBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  submitEntry(zipcodeInput.value);
-  zipcodeInput.value = '';
+  const zipcodeInput = document.getElementById('zip');
+  const inputText= document.getElementById('feelings');
+
+  submitEntry(zipcodeInput.value, inputText.value);
+  inputText.value = '';
 });
 
 /*
