@@ -1,112 +1,239 @@
-body{
-  background: #fffff8;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,900');
+
+hmtl {
+  margin: 0;
+  padding: 0;
 }
 
-#app{
-  display: grid;
-  grid-auto-rows: minmax(150px, auto);
-  /* grid-template-columns:  */
-  height:100vh;
-  background: #f23557;
-  color: #f0d43a;
-  justify-content: center;
-  grid-gap: 1em;
-  font-size: 20px;
-  font-family: 'Oswald', sans-serif;
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  
+  display: flex;
+  flex-direction: column;
 }
 
-.holder{
-
+.header {
+  height: 7vh;
 }
 
-.entry{
-  background: rgba(59, 74, 107, .4);
+.holder {
+  width: 100%;
+  margin: 0;
 }
 
-#entryHolder{
-
-}
-
-#date{
-
-}
-
-#temp{
-
-}
-
-#content{
-
+.headline-link {
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  cursor: pointer;
+  
+  display: flex;
+  align-items: center;
 }
 
 .headline {
-
-}
-.title{
-
-}
-
-/*  Basic Styling To Override Default For Basic HTML Elements */
-label{
-  display:block;
-  font-size: 27px;
+  font-size: 1.2em;
+  font-weight: 900;
+  margin: 0;
+  padding-left: 20px;
+  color: gold;
+  letter-spacing: 5px;
+  text-shadow: 1px 1px 2px #3A3B3C;
+  text-transform: uppercase;
 }
 
-input{
-  display:block;
-  height: 60px;
-  width: 320px;
-  background:#22b2da;
-  color: #f0d43a;
-  font-size: 20px;
-  font-family: 'Oswald', sans-serif;
-  border: none;
+.headline:hover {
+  font-size: 1.3em;
 }
 
-button{
-  width: 400px;
-  height: 100px;
-  background: #3b4a6b;
-  color: #f0d43a;
-  font-size: 26px;
-  font-family: 'Oswald', sans-serif;
-  border: none;
-  box-shadow: 2px 4px 5px #444;
+.main {
+  height: 88vh;
+}
+
+.temp-cont {
+  font-size: 10em;
+  font-weight: 100;
+  
+  margin: 0 0;
+  padding: 0 0;
+  width: 100%;
+  height: 40%;
+  letter-spacing: 5px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.temp-cont__num {
+  margin: 0 0;
+  padding: 0 0;
+  display: inline;
+}
+
+.temp-cont__metric {
+  margin: 0 0;
+  padding: 0 0;
+  display: inline;
+}
+
+.info-cont {
+  height: 8%;
+  width: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  
+  font-size: 2em;
+}
+
+.info-cont__zipInp {
+  width: 7%;
+  text-align: right;
+  border: 0;
+  font-size: 1em;
+  font-weight: 900;
+  display: inline;
+}
+.info-cont__zipInp::placeholder {
+  font-size: 0.7em;
+}
+
+.info-cont__divid {
+  margin: 0;
+  text-align: center;
+  width: 40px;
+  height: 100%;
+  border-bottom: 2px solid gray;
+}
+
+.info-cont__icon {
+  background-image: url('https://openweathermap.org/img/wn/02d@2x.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+}
+
+.feel {
+  height: 52%;
+  width: 100%;
+  padding: 30px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.feel-inpCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feelLabel {
+  font-weight: 900;
+  letter-spacing: 3px;
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0 0 13px 0;
+}
+
+.submitBtn {
+  background-color: gold;
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 4px;
+  margin: 36px 0 0 10px;
+  width: 15%;
+  height: 138px;
+  border-radius: 10px;
   cursor: pointer;
 }
-h1{
-  font-size: 36px;
+
+.submitBtn:hover {
+  background-color: gray;
 }
 
-textarea{
-  background:#22b2da;
-  color: #f0d43a;
-  font-size: 20px;
-  font-family: 'Oswald', sans-serif;
+.footer {
+  height: 5vh;
+  width: 100%;
+  background-color: gold;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  
+  font-size: 0.8em;
 }
-/* Reset style for HTML element on active to have no border*/
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
-  outline: none;
+
+.entry {
+  background-color: gold;
+  position: fixed;
+  width: 11%;
+  height: 25%;
+  border-radius: 7px 7px 0 0;
+  left: 7px;
+  bottom: -50%;
+  border-top: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  
+  z-index: -5;
+  transition: all .7s ease-in-out;
 }
-/* Style for Placeholder Text*/
-::placeholder { /* Firefox, Chrome, Opera */ 
-  color: #f0d43a; 
-  font-family: 'Oswald', sans-serif;
 
-} 
+.show {
+  bottom: 4.9vh; /*slide modal up smoothly*/
+}
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-  color: #f0d43a; 
-  font-family: 'Oswald', sans-serif;
+.dataBx {
+  display: flex;
+  align-items: center;
+  width: 12%;
+  font-size: 1.2em;
+  cursor: pointer;
+  /* background-color: red; */
+}
 
-} 
+.dataBx__arrow {
+  font-weight: 900;
+  padding: 0;
+  margin: 0 5px 0 9px;
+  display: inline-block;
+  transform: rotate(-90deg);
+  
+  transition: all .6s ease-in-out;
+}
 
-::-ms-input-placeholder { /* Microsoft Edge */ 
-  color: #f0d43a; 
-  font-family: 'Oswald', sans-serif;
+.dataBx__arrow_rotate {
+  transform: rotate(90deg);
+}
 
+.dataBx__keyword {
+  padding: 0;
+  margin: 0 3px;
+}
+
+.footer__tagline {
+  width: 88%;
+  text-align: right;
+  padding: 0;
+  margin: 0 9px 0 0;
+}
+
+.footer__link {
+  font-weight: 900;
+  cursor: pointer;
+  color: #000;
 }

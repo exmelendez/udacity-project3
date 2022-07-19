@@ -3,36 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <title>Weather Journal</title>
-<link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
- <body>
-<div id = "app">
-  <div class ="holder headline">
-    Weather Journal App
-  </div>
 
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
-
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-    <div id = "entryHolder">
-      <div id = "date"></div> 
-      <div id = "temp"></div>
-      <div id = "content"></div>
+<body>
+  <header class="header holder">
+    <a class="headline-link" href="#">
+      <h1 class="headline">Weather Journal App</h1>
+    </a>
+  </header>
+  
+  <main class="main holder">
+    <div class="temp-cont">
+      <span class="temp-cont__num">89</span>
+      <span class="temp-cont__metric">&#176;F</span>
     </div>
-  </div>
-</div>
-<script src="app.js" type="text/javascript"></script>
+    
+    <div class="info-cont">
+      <input id="zip" class="info-cont__zipInp" type="text" value="10463" placeholder="Enter Zip" />
+      <span class="info-cont__divid">/</span>
+      <span>Cloudy</span>
+      <span id="weatherImg" class="info-cont__icon"></span>
+    </div>
+    
+    <div class="feel">
+      <div class="feel-inpCont">
+        <label for="feelings" class="feelLabel">How are you feeling today?</label>
+        <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="40"></textarea>
+      </div>
+
+      <button id="generate" class="submitBtn" type="submit">Generate</button>
+    </div>
+  </main>
+  
+  <footer class="footer holder">
+    <div id="modal" class="entry">stuff</div>
+    
+    <p id="modalBtn" class="dataBx">
+      <span id="modalBtnArrow" class="dataBx__arrow">></span>Click to <span id="modalKeyword" class="dataBx__keyword">reveal</span> submitted data
+    </p>
+    
+    <span class="footer__tagline">
+      Created by <a class="footer__link" href="https://github.com/exmelendez">E Melendez</a>
+    </span>
+  </footer>
+  <script src="app.js" type="text/javascript"></script>
 
 </body>
 </html>

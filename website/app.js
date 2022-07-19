@@ -1,6 +1,21 @@
 /* Global Variables */
 const generateBtn = document.getElementById('generate');
 const zipcodeInput = document.getElementById('zip');
+const modalBtn = document.getElementById('modalBtn');
+const modal = document.getElementById('modal');
+const modalBtnArrow = document.getElementById('modalBtnArrow');
+const modalKeyword = document.getElementById('modalKeyword');
+
+modalBtn.addEventListener('click', () => {
+  modalBtnArrow.classList.toggle('dataBx__arrow_rotate');
+  modal.classList.toggle('show');
+  
+  if(modalKeyword.textContent === 'reveal') {
+    modalKeyword.textContent = "hide";
+  } else {
+    modalKeyword.textContent = "reveal";
+  }
+});
 
 // Create a new date instance dynamically with JS
 let d = new Date();
