@@ -1,4 +1,4 @@
-/* Global Variables */
+/* GLOBAL VARIABLES */
 const generateBtn = document.getElementById('generate');
 const modalBtn = document.getElementById('modalBtn');
 const modal = document.getElementById('modal');
@@ -9,13 +9,14 @@ modalBtn.addEventListener('click', () => {
   modalBtnArrow.classList.toggle('dataBx__arrow_rotate');
   modal.classList.toggle('show');
   
-  if(modalKeyword.textContent === 'reveal') {
+  if(modalKeyword.textContent === "reveal") {
     modalKeyword.textContent = "hide";
   } else {
     modalKeyword.textContent = "reveal";
   }
 });
 
+// TODO: Delete when necessary
 /*
 fetch('/')
   .then(response => response.json())
@@ -30,6 +31,7 @@ const getLatLon = async (baseUrl, zip, apiKey) => {
     return await data;
   } catch (err) {
     console.log('error:', err);
+    // TODO: Implement some sort of popup or notification for errors
   }
 };
 
@@ -42,9 +44,36 @@ const getWeather = async (baseUrl, lat, lon, apiKey) => {
     return await data;
   } catch (err) {
     console.log('error:', err);
+    // TODO: Implement some sort of popup or notification for errors
   }
 };
 
+const postData = async ( url = '', data = {}) => {
+  console.log(data);
+  const response = await fetch(url, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
+
+  try {
+    //  DO SOMETHING
+    const newData = await response.json();
+    console.log('client side:', newData);
+    return newData;
+  } catch (error) {
+    console.log('error', error);
+  }
+};
+
+postData('/addMovie', {movie: 'The Matrix', score: 5});
+
+
+// TODO: Commented out for testing
+/*
 const postData = (date, userEntry, weatherData) => {
   const tempDisplay = document.getElementById('tempDisplay');
   const weatherDesc = document.getElementById('weatherDesc');
@@ -65,6 +94,7 @@ const postData = (date, userEntry, weatherData) => {
 
   console.log(date);
 };
+*/
 
 const submitEntry = async (zip, textEntry) => {
   const baseUrl = 'https://api.openweathermap.org/';
@@ -78,6 +108,7 @@ const submitEntry = async (zip, textEntry) => {
 
   await postData(newDate, textEntry, weatherData);
 
+  // TODO: remove when/if necessary
   /*
   const res = await fetch(`${baseUrl}${geoUrl}${apiKey}`)
   try {
@@ -104,6 +135,7 @@ generateBtn.addEventListener('click', (e) => {
   inputText.value = '';
 });
 
+// TODO: Remove when/if necessary
 /*
 const retrieveData = async (url='') =>{ 
   const request = await fetch(url);
