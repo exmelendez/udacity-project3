@@ -16,9 +16,6 @@ modalBtn.addEventListener('click', () => {
   }
 });
 
-// Create a new date instance dynamically with JS
-
-
 /*
 fetch('/')
   .then(response => response.json())
@@ -53,6 +50,7 @@ const postData = (date, userEntry, weatherData) => {
   const tempMetricDisplay = document.getElementById('tempMetricDisplay');
   const weatherDesc = document.getElementById('weatherDesc');
   const weatherImg = document.getElementById('weatherImg');
+  const weatherDivide = document.getElementById('weatherDivide');
   const wthrImgBaseUrl = 'https://openweathermap.org/img/wn/';
   const wthrImgExtUrl = '@2x.png';
   const wthrImgFormUrl = `${wthrImgBaseUrl}${weatherData.weather[0].icon}${wthrImgExtUrl}`;
@@ -63,8 +61,9 @@ const postData = (date, userEntry, weatherData) => {
   tempDisplay.style.visibility = 'visible';
   tempMetricDisplay.style.visibility = 'visible';
 
+  weatherDivide.style.display = 'inherit';
   weatherImg.style.backgroundImage = `url(${wthrImgFormUrl})`;
-  weatherImg.style.display = 'inline-block';
+  weatherImg.style.display = 'flex';
 };
 
 const submitEntry = async (zip, textEntry) => {
@@ -77,7 +76,7 @@ const submitEntry = async (zip, textEntry) => {
   const d = await new Date();
   const newDate = await d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
-  postData(newDate, textEntry, weatherData);
+  await postData(newDate, textEntry, weatherData);
 
   /*
   const res = await fetch(`${baseUrl}${geoUrl}${apiKey}`)
@@ -101,6 +100,7 @@ generateBtn.addEventListener('click', (e) => {
   const inputText= document.getElementById('feelings');
 
   submitEntry(zipcodeInput.value, inputText.value);
+  zipcodeInput.style.border = '0';
   inputText.value = '';
 });
 

@@ -97,8 +97,8 @@ body {
 
 .info-cont__zipInp {
   width: 7%;
-  text-align: right;
-  border: 0;
+  text-align: center;
+  /* border: 1px; */
   font-size: 1em;
   font-weight: 900;
   display: inline;
@@ -135,7 +135,7 @@ body {
   text-align: center;
   width: 40px;
   height: 100%;
-  border-bottom: 2px solid gray;
+  display: none;
 }
 
 .info-cont__icon {
