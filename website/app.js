@@ -47,7 +47,6 @@ const getWeather = async (baseUrl, lat, lon, apiKey) => {
 
 const postData = (date, userEntry, weatherData) => {
   const tempDisplay = document.getElementById('tempDisplay');
-  const tempMetricDisplay = document.getElementById('tempMetricDisplay');
   const weatherDesc = document.getElementById('weatherDesc');
   const weatherImg = document.getElementById('weatherImg');
   const weatherDivide = document.getElementById('weatherDivide');
@@ -59,11 +58,12 @@ const postData = (date, userEntry, weatherData) => {
   weatherDesc.textContent = weatherData.weather[0].main;
 
   tempDisplay.style.visibility = 'visible';
-  tempMetricDisplay.style.visibility = 'visible';
 
   weatherDivide.style.display = 'inherit';
   weatherImg.style.backgroundImage = `url(${wthrImgFormUrl})`;
   weatherImg.style.display = 'flex';
+
+  console.log(date);
 };
 
 const submitEntry = async (zip, textEntry) => {
@@ -74,7 +74,7 @@ const submitEntry = async (zip, textEntry) => {
   const weatherData = await getWeather(baseUrl, geoData.lat, geoData.lon, apiKey);
 
   const d = await new Date();
-  const newDate = await d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
+  const newDate = await `${d.getMonth()}.${d.getDate()}.${d.getFullYear()} | ${d.toLocaleTimeString()}`;
 
   await postData(newDate, textEntry, weatherData);
 

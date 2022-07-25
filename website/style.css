@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:100,900');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900');
 
 hmtl {
   margin: 0;
@@ -57,7 +57,7 @@ body {
 
 .temp-cont {
   font-size: 10em;
-  font-weight: 100;
+  font-weight: 900;
   
   margin: 0 0;
   padding: 0 0;
@@ -77,11 +77,9 @@ body {
   visibility: hidden;
 }
 
-.temp-cont__metric {
-  margin: 0 0;
-  padding: 0 0;
-  display: inline;
-  visibility: hidden;
+.temp-cont__num::after {
+  content: "\2109";
+  font-weight: 100;
 }
 
 .info-cont {
@@ -98,7 +96,6 @@ body {
 .info-cont__zipInp {
   width: 7%;
   text-align: center;
-  /* border: 1px; */
   font-size: 1em;
   font-weight: 900;
   display: inline;
@@ -204,7 +201,7 @@ body {
 .entry {
   background-color: gold;
   position: fixed;
-  width: 11%;
+  width: 13%;
   height: 25%;
   border-radius: 7px 7px 0 0;
   left: 7px;
@@ -221,8 +218,40 @@ body {
   bottom: 4.9vh; /*slide modal up smoothly*/
 }
 
+.entry__header {
+  margin: 10px 0;
+  padding: 0 10px;
+  text-align: center;
+  letter-spacing: 1px;
+  font-size: 1.3em;
+}
+
+.entry__item {
+  margin: 1px 0;
+  padding: 4px 7px;
+}
+
+.entry__item-title {
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.entry__item-title::after {
+  content: ":";
+  padding-left: 3px;
+  font-weight: 900;
+}
+
+.entry__item-text {
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 4px;
+}
+
 .dataBx {
   display: flex;
+  /* display: none; */
   align-items: center;
   width: 12%;
   font-size: 1.2em;
