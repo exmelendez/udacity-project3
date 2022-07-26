@@ -139,6 +139,7 @@ body {
   width: 40px;
   height: 100%;
   display: none;
+  align-items: center;
 }
 
 .info-cont__icon {
@@ -271,7 +272,6 @@ body {
 }
 
 .dataBx {
-  /* display: flex; */ /* THIS IS WHAT IT SHOULD BE ONCE DATA RECEIVED */
   display: none;
   align-items: center;
   width: 12%;

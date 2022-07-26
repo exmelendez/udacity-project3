@@ -1,44 +1,11 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {
-  thing: "some things here",
-  name: 'Eddie',
-  age: 37,
-};
+projectData = {};
 
 // Require Express to run server and routes
 const express = require('express');
 
 // Start up an instance of app
 const app = express();
-
-app.all('/', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
-app.get('/', (req, res) => {
-  console.log('console log', projectData);
-  res.status(200).send(projectData);
-});
-
-app.get('/all', (req, res) => {
-  console.log('all route');
-});
-
-// TODO: begin post testing
-
-const data = [];
-
-app.post('/addMovie', addMovie);
-
-function addMovie (req, res){
-  data.push(req.body)
-  res.send(data);
-  console.log('server side:', data)
-}
-
-// TODO: End post testing
 
 /* Dependencies */
 const bodyParser = require('body-parser');
@@ -62,3 +29,28 @@ app.listen(port, listening);
 function listening() {
   console.log(`runnin on localhost: ${port}`);
 };
+
+app.all('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next()
+});
+
+app.get('/', (req, res) => {
+  res.status(200).send(projectData);
+});
+
+app.get('/data', (req, res) => {
+  res.send(projectData);
+});
+
+app.post('/addEntry', addEntry);
+
+function addEntry (req, res){
+  const d = new Date();
+  const newDate = `${d.getMonth()}.${d.getDate()}.${d.getFullYear()} | ${d.toLocaleTimeString()}`;
+  
+  projectData = req.body;
+  projectData.entryDT = newDate;
+  res.send(projectData);
+}
