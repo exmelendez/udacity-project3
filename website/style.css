@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,900');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300');
 
 * { 
   box-sizing: border-box;
@@ -338,4 +339,49 @@ body {
   font-weight: 900;
   cursor: pointer;
   color: #000;
+}
+
+.error-modal {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 6px;
+  bottom: 9vh;
+  right: -50%;
+
+  height: 175px;
+  width: 175px;
+  border: 2px solid gray;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px #888888;
+
+  font-family: 'Open Sans', sans-serif;
+  z-index: -5;
+  transition: all .7s ease-in-out;
+}
+
+.error-modal_show {
+  right: 4vw;
+}
+
+.error-modal__img {
+  margin: 0;
+  padding: 3px;
+  width: 44px;
+  height: 38px;
+}
+
+.error-modal__tagline {
+  margin: 0;
+  padding: 5px 0;
+  color: red;
+  font-size: 0.9em;
+  font-weight: 400;
+}
+
+.error-modal__message {
+  font-size: 0.7em;
+  text-align: center;
 }

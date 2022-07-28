@@ -6,14 +6,23 @@ const zipcodeInput = document.getElementById('zip');
 const inputText= document.getElementById('feelings');
 const zipError = document.getElementById('zipErr');
 const textError = document.getElementById('textErr');
+const errorModal = document.getElementById('errorModal');
 
 const showModalBtn = () => {
   modalBtn.style.display = "flex";
 };
 
-const showError = (err) => {
-  // TODO Add error handler
-  console.log('Error modal');
+const showError = (msg) => {
+  const errorModalMsg = document.getElementById('errorModalMsg');
+
+  errorModalMsg.textContent = msg;
+  errorModal.classList.toggle('error-modal_show');
+  
+  setTimeout(() => {
+    errorModal.classList.toggle('error-modal_show');
+    errorModalMsg.textContent = "Something went wrong";
+
+  }, 5000);
 };
 
 const updateMainUi = data => {
@@ -53,30 +62,46 @@ const updateModalUi = data => {
 
 const getData = async () => {
   fetch('/data')
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) {
+      let err = new Error("get Data error: " + res.status);
+      err.response = res;
+      err.status = res.status;
+      throw err;
+    }
+    res.json()
+  })
   .then(data => {
     const isEmpty = Object.keys(data).length === 0;
 
     if(!isEmpty){
       showModalBtn();
       updateModalUi(data);
-    } else {
-      showError();
     }
   })
-  .catch(error => console.log(error));
+  .catch(error => {
+    console.log('error in getData:', error);
+    showError(error.message);
+  });
 };
-
 
 const getLatLon = async (baseUrl, zip, apiKey) => {
   const geoUrl = `geo/1.0/zip?zip=${zip},US`;
 
   const res = await fetch(`${baseUrl}${geoUrl}${apiKey}`)
   try {
+    if (!res.ok) {
+      let err = new Error("Incorrect or unavailable Zipcode");
+      err.response = res;
+      err.status = res;
+      throw err;
+    }
+
     const data = await res.json();
     return await data;
   } catch (err) {
-    showError(err);
+    console.log('error in getLatLon');
+    showError(err.message);
   }
 };
 
@@ -85,10 +110,18 @@ const getWeather = async (baseUrl, lat, lon, apiKey) => {
 
   const res = await fetch(`${baseUrl}${weatherUrl}${apiKey}&units=imperial`)
   try {
+    if (!res.ok) {
+      let err = new Error("Trouble getting weather");
+      err.response = res;
+      err.status = res;
+      throw err;
+    }
+
     const data = await res.json();
     return await data;
   } catch (err) {
-    showError(err);
+    console.log('error in getWeather');
+    showError(err.message);
   }
 };
 
@@ -103,10 +136,18 @@ const postData = async ( url = '', data = {}) => {
   });
 
   try {
+    if (!response.ok) {
+      let err = new Error("Trouble posting data");
+      err.response = response;
+      err.status = response.status;
+      throw err;
+    }
+
     const newData = await response.json();
     return newData;
   } catch (err) {
-    showError(err);
+    console.log('error in postData');
+    showError(err.message);
   }
 };
 
@@ -148,11 +189,11 @@ generateBtn.addEventListener('click', (e) => {
 
   if(!zipcodeInput.value) {
     zipError.classList.add('input-error_show');
+    showError("Enter zipcode in the required field");
   } else if(!inputText.value) {
     textError.classList.add('input-error_show');
+    showError("Enter text in the required field");
   } else {
     submitEntry();
   }
 });
-
-getData();

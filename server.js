@@ -36,6 +36,7 @@ app.all('/', function(req, res, next) {
   next()
 });
 
+/* Currently not being used */
 app.get('/', (req, res) => {
   res.status(200).send(projectData);
 });
