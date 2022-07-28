@@ -53,8 +53,6 @@ Below is a preview of the Error modal which appears for about 5 seconds towards 
 | `POST`       | / addEntry            | Push client/UI data to *projectData* object var                                 | *name*, *link*          |
 |
 
-> NOTE: The ":" symbol under the *route* column symbolizes the name of the property needed for the route, which must be included in the URL
-
 ## Running the Project
 ---
 
