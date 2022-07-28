@@ -43,7 +43,6 @@ Below is a preview of the Error modal which appears for about 5 seconds towards 
 | Request Type | Route              | Description                             | Required Request Fields   |
 | ------------ |--------------------| --------------------------------------- | ------------------------- |
 | `GET`        | / data            | Obtain JSON of *projectData* var users                | N/A                       |
-| 
 
 ### POST
 ---
@@ -51,7 +50,6 @@ Below is a preview of the Error modal which appears for about 5 seconds towards 
 | Request Type | Route              | Description                                     | Required Request Fields |
 | ------------ |--------------------| ----------------------------------------------- | ----------------------- |
 | `POST`       | / addEntry            | Push client/UI data to *projectData* object var                                 | *name*, *link*          |
-|
 
 ## Running the Project
 ---
