@@ -19,7 +19,11 @@
     </div>
     
     <div class="info-cont">
-      <input id="zip" class="info-cont__zipInp" type="text" placeholder="Zipcode" />
+      <div class="info-cont__zipCont">
+        <input id="zip" class="info-cont__zipInp" type="text" placeholder="Zipcode" required/>
+        <p id="zipErr" class="input-error input-error__zip">Zipcode is required</p>
+      </div>
+
       <span id="weatherDivide" class="info-cont__divid">/</span>
       <span id="weatherDesc"></span>
       <span id="weatherImg" class="info-cont__icon"></span>
@@ -28,7 +32,8 @@
     <div class="feel">
       <div class="feel-inpCont">
         <label for="feelings" class="feelLabel">How are you feeling today?</label>
-        <textarea id="feelings" class= "myInput" placeholder="Enter your feelings here" rows="9" cols="40"></textarea>
+        <textarea id="feelings" class= "myInput" placeholder="Enter your feelings here" rows="9" cols="40" required></textarea>
+        <p id="textErr" class="input-error input-error__text">Text is required</p>
       </div>
 
       <button id="generate" class="submitBtn" type="submit">Generate</button>

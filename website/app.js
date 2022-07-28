@@ -4,6 +4,8 @@ const modalBtn = document.getElementById('modalBtn');
 const modalKeyword = document.getElementById('modalKeyword');
 const zipcodeInput = document.getElementById('zip');
 const inputText= document.getElementById('feelings');
+const zipError = document.getElementById('zipErr');
+const textError = document.getElementById('textErr');
 
 const showModalBtn = () => {
   modalBtn.style.display = "flex";
@@ -34,6 +36,9 @@ const updateMainUi = data => {
   weatherDivide.style.display = 'flex';
   weatherImg.style.backgroundImage = `url(${wthrImgFormUrl})`;
   weatherImg.style.display = 'flex';
+
+  zipError.classList.remove('input-error_show');
+  textError.classList.remove('input-error_show');
 };
 
 const updateModalUi = data => {
@@ -140,7 +145,14 @@ modalBtn.addEventListener('click', () => {
 
 generateBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  submitEntry();
+
+  if(!zipcodeInput.value) {
+    zipError.classList.add('input-error_show');
+  } else if(!inputText.value) {
+    textError.classList.add('input-error_show');
+  } else {
+    submitEntry();
+  }
 });
 
 getData();

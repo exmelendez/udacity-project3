@@ -99,13 +99,42 @@ body {
   font-size: 2em;
 }
 
-.info-cont__zipInp {
+.info-cont__zipCont {
   width: 7%;
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+.info-cont__zipInp {
+  width: 100%;
   text-align: center;
   font-size: 1em;
   font-weight: 900;
   display: inline;
 }
+
+.input-error {
+  margin: 0;
+  padding: 7px 0;
+  text-align: center;
+  color: red;
+}
+
+.input-error__zip {
+  font-size: 0.4em;
+  display: none;
+}
+
+.input-error__text {
+  font-size: 1em;
+  display: none;
+}
+
+.input-error_show {
+  display: block;
+}
+
 .info-cont__zipInp::placeholder {
   font-size: 0.7em;
 }
